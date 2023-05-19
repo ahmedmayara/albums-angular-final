@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Music Albums</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark px-5" *ngIf="authService.isLoggedIn">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Music Albums</a>
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/albums" *ngIf="authService.isLoggedIn">Home</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" *ngIf="authService.isLoggedIn">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Browse
+                </a>
+                <div class="dropdown-menu dropdown-bg-dark">
+                    <a class="dropdown-item text-white" href="#" routerLink="/add-album" *ngIf="authService.isAdmin()">Add Album</a>
+                    <a class="dropdown-item text-white" href="#" routerLink="/searchByLabel" *ngIf="authService.isAdmin()">Search By Label</a>
+                    <a class="dropdown-item text-white" href="#" routerLink="/rechercheParNom">Search By Title</a>
+                    <a class="dropdown-item text-white" href="#" routerLink="/listeLabels" *ngIf="authService.isAdmin()">Manage Labels</a>
+                    <a class="dropdown-item text-white" href="#" routerLink="/albums">List</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <span>
+                        {{authService.LoggedUser}}
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-bg-dark">
+                    <a class="dropdown-item text-white" href="#" *ngIf="!authService.isLoggedIn" routerLink="/login">Login</a>
+                    <a class="dropdown-item text-white" href="#" *ngIf="authService.isLoggedIn" (click)="onLogout()" routerLink="/login">Logout</a>
+                    <a class="dropdown-item text-white" href="#">Profile</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
+<router-outlet></router-outlet>

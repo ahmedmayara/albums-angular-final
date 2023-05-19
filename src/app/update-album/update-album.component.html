@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="card bg-dark p-4 mt-4" style="width: 75rem;">
+        <div class="card-body text-white">
+            <h1 class="card-title text-center py-3">Edit An Album</h1>
+        </div>
+        <form>
+            <div class="form-group">
+                <div>
+                    <label class="text-white">Album ID :</label>
+                    <input readonly type="text" [(ngModel)]="currentAlbum.idAlbum" name="idAlbum" class="form-control" style="width: 25rem;">
+                </div>
+                <div class="mt-2">
+                    <label class="text-white">Album Title :</label>
+                    <input type="text" [(ngModel)]="currentAlbum.title" name="title" class="form-control" style="width: 25rem;">
+                </div>
+                <div class="mt-2">
+                    <label class="text-white">Artist :</label>
+                    <input type="text" [(ngModel)]="currentAlbum.artist" name="artist" class="form-control" style="width: 25rem;">
+                </div>
+                <div class="mt-2">
+                    <label class="text-white">Release Date :</label>
+                    <input type="date" [ngModel]="currentAlbum.releaseDate | date: 'yyyy-MM-dd'"
+                    (ngModelChange)=" currentAlbum.releaseDate= $event" name="releaseDate" class="form-control" style="width: 25rem;">
+                </div>
+                <div class="mt-2">
+                    <label class="text-white">Genre :</label>
+                    <input type="text" [(ngModel)]="currentAlbum.genre" name="genre" class="form-control" style="width: 25rem;">
+                </div>
+                <div class="mt-2">
+                    <label class="text-white">Label :</label>
+                    <select class="form-control form-control-lg" id="idLab" name="idLab" [(ngModel)]="updatedLabelId" style="width: 25rem;">
+                        <option *ngFor="let lab of labels" [value]="lab.idLabel">
+                            {{lab.labelName}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mt-2">
+                    <label class="mb-2">Image :</label>
+                    <input type="file" (change)="onImageUpload($event)" class="form-control" style="width: 25rem;">
+                </div>
+                
+                <div class="mt-2">
+                    <img [src]="myImage" class="card-img-top img-fluid rounded-start w-25" />
+                </div>
+
+                <div class="mt-5" style="margin-left: 500px;">
+                    <button type="submit" class="btn btn-info ml-3" (click)="updateAlbum()">Edit Album</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

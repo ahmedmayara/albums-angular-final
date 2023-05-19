@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mt-4">
+        <label>Labels :</label>
+        <select class="form-control form-control-lg" name="idLab" id="idLab" [(ngModel)]="idLabel" (change)="onChange()">
+            <option *ngFor="let lab of labels" value="{{lab.idLabel}}">
+                {{lab.labelName}}
+            </option>
+        </select>
+    </div>
+    <div class="card shadow text-white bg-dark mt-4">
+        <div class="card-body">
+            <table class="table table-striped text-white bg-dark mt-4">
+                <tr>
+                    <th>#</th>
+                    <th>Album Title :</th>
+                    <th>Artist Name :</th>
+                    <th>Release Date :</th>
+                    <th>Genre :</th>
+                    <th>Label :</th>
+                </tr>
+
+                <tbody *ngFor="let album of albums">
+                    <tr>
+                        <td>{{album.idAlbum}}</td>
+                        <td>{{album.title}}</td>
+                        <td>{{album.artist}}</td>
+                        <td>{{album.releaseDate | date:'yyyy/MM/dd'}}</td>
+                        <td>{{album.genre}}</td>
+                        <td>{{album.label.labelName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
