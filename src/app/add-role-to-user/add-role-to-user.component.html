@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <form>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        [(ngModel)]="user.username"
+        name="id"
+        class="form-control w-25"
+        id="username"
+        disabled
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="currentRole">Current Roles</label>
+      <div class="flex flex-row" *ngFor="let role of user.roles">
+        <span class="badge badge-success mr-2" *ngIf="role.role === 'ADMIN'">
+          {{ role.role }}
+        </span>
+        <span class="badge badge-primary mr-2" *ngIf="role.role === 'USER'">
+          {{ role.role }}
+        </span>
+        <button
+          class="badge badge-danger"
+          (click)="removeRoleFromUser(role.role_id)"
+        >
+          Remove Role
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="roleSelect">Select Role to Add</label>
+      <select [(ngModel)]="newRole" name="roleSelect" class="form-control w-25">
+        <option value="none" selected disabled>Select an Option</option>
+        <option *ngFor="let role of roles" [ngValue]="role">
+          {{ role.role }}
+        </option>
+      </select>
+    </div>
+
+    <button class="btn btn-info" (click)="addRoleToUser()">Add Role</button>
+  </form>
+</div>

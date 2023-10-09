@@ -5,11 +5,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  apiURL: string = 'http://localhost:8070/users';
+  apiURL: string = 'http://localhost:8081/users';
   token!: string;
   private helper = new JwtHelperService();
 
@@ -17,7 +16,7 @@ export class AuthService {
   public isLoggedIn: boolean = false;
   public roles!: string[];
 
-  constructor( private router : Router, private http : HttpClient ) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   logout() {
     this.isLoggedIn = false;
@@ -29,19 +28,21 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  isTokenExpired() : boolean {
+  isTokenExpired(): boolean {
     return this.helper.isTokenExpired(this.token);
   }
 
-  signIn ( user : User ) {
-    return this.http.post<User>(this.apiURL + '/login', user, {observe: 'response'});
+  signIn(user: User) {
+    return this.http.post<User>(this.apiURL + '/login', user, {
+      observe: 'response',
+    });
   }
 
   saveToken(jwt: string) {
     localStorage.setItem('token', jwt);
     this.token = jwt;
     this.isLoggedIn = true;
-    localStorage.setItem('isLoggedIn',JSON.stringify(this.isLoggedIn));
+    localStorage.setItem('isLoggedIn', JSON.stringify(this.isLoggedIn));
     this.decodeToken();
   }
 
@@ -58,19 +59,21 @@ export class AuthService {
     this.decodeToken();
   }
 
-  getToken() : string {
+  getToken(): string {
     return this.token;
   }
 
-  isAdmin() : Boolean {
-    if (!this.roles)
-      return false;
-    return this.roles.indexOf('ROLE_ADMIN') >= 0;
+  isAdmin(): Boolean {
+    if (!this.roles) return false;
+    return this.roles.indexOf('ADMIN') >= 0;
   }
 
-  isUser() : Boolean {
-    if (!this.roles)
-      return false;
-    return ( this.roles.indexOf('USER') > -1 );
+  isUser(): Boolean {
+    if (!this.roles) return false;
+    return this.roles.indexOf('USER') > -1;
+  }
+
+  getIsLoggedIn(): boolean {
+    return JSON.parse(localStorage.getItem('isLoggedIn')!);
   }
 }

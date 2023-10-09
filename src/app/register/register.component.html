@@ -1,16 +1,12 @@
 <div class="container mt-5">
   <div class="row justify-content-md-center">
     <div class="col-md-4">
-      <div class="alert alert-danger" *ngIf="error === 1">
-        <strong> Password and Confirm Password must be the same! </strong>
-      </div>
-
       <div
         class="card bg-dark"
         style="width: 25rem; position: relative; margin-top: 230px"
       >
         <div class="card-body text-white">
-          <h3 class="card-title text-center py-3">Sign In</h3>
+          <h3 class="card-title text-center py-3">Sign Up</h3>
           <form>
             <div class="form-group">
               <label>Username :</label>
@@ -35,15 +31,11 @@
             </div>
 
             <div class="row justify-content-md-center py-3">
-              <button type="button" (click)="onLoggedIn()" class="btn btn-info">
-                Sign In
+              <button type="button" (click)="register()" class="btn btn-info">
+                Sign up
               </button>
             </div>
           </form>
-
-          <div class="row justify-content-md-center py-3">
-            <a routerLink="/register">Sign Up</a>
-          </div>
         </div>
       </div>
     </div>

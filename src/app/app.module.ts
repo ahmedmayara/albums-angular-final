@@ -15,6 +15,9 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { SearchByLabelComponent } from './search-by-label/search-by-label.component';
 import { UpdateLabelComponent } from './update-label/update-label.component';
 import { TokenInterceptor } from './services/token.interceptor';
+import { UsersComponent } from './users/users.component';
+import { AddRoleToUserComponent } from './add-role-to-user/add-role-to-user.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { TokenInterceptor } from './services/token.interceptor';
     LoginComponent,
     ForbiddenComponent,
     SearchByLabelComponent,
-    UpdateLabelComponent
+    UpdateLabelComponent,
+    UsersComponent,
+    AddRoleToUserComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
