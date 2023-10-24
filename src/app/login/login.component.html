@@ -1,8 +1,24 @@
 <div class="container mt-5">
   <div class="row justify-content-md-center">
     <div class="col-md-4">
-      <div class="alert alert-danger" *ngIf="error === 1">
-        <strong> Password and Confirm Password must be the same! </strong>
+      <div class="alert alert-danger" *ngIf="isInvalid">
+        <strong> Username or Password is incorrect! Please try again!</strong>
+      </div>
+
+      <div class="alert alert-success" *ngIf="isEnabled">
+        <strong>
+          Activate your account by clicking the link sent to your email!</strong
+        >
+        <input
+          [(ngModel)]="code"
+          type="text"
+          class="form-control"
+          placeholder="Enter Code"
+        />
+
+        <button type="button" (click)="onActivate()" class="btn btn-info mt-2">
+          Activate
+        </button>
       </div>
 
       <div

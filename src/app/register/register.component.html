@@ -1,6 +1,9 @@
 <div class="container mt-5">
   <div class="row justify-content-md-center">
     <div class="col-md-4">
+      <div class="alert alert-danger" *ngIf="passwordMismatchError">
+        <strong> Password and Confirm Password must be the same! </strong>
+      </div>
       <div
         class="card bg-dark"
         style="width: 25rem; position: relative; margin-top: 230px"
@@ -20,11 +23,33 @@
             </div>
 
             <div class="form-group">
+              <label>Email :</label>
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="user.email"
+                class="form-control py-2"
+                placeholder="Enter Email"
+              />
+            </div>
+
+            <div class="form-group">
               <label>Password :</label>
               <input
                 type="password"
                 name="password"
                 [(ngModel)]="user.password"
+                class="form-control py-2"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Confirm Password :</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
                 class="form-control py-2"
                 placeholder="••••••••"
               />

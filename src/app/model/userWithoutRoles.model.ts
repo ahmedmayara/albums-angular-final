@@ -1,10 +1,8 @@
-import { Role } from './role.model';
-
-export class User {
+export class UserWithoutRoles {
   user_id!: number;
   username!: string;
   email!: string;
   password!: string;
   enabled!: boolean;
-  roles!: Role[];
+  verificationCode!: string;
 }

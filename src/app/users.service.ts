@@ -56,4 +56,8 @@ export class UsersService {
   getUserRolesById(id: number) {
     return this.http.get<Role[]>(this.apiUrl + '/userRoles/' + id);
   }
+
+  activateAccount(username: string, code: string) {
+    return this.http.get(this.apiUrl + '/activate/' + username + '/' + code);
+  }
 }
